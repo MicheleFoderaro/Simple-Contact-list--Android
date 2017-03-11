@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.NotaDetailsActivity">
+
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="MODIFICA"/>
+
+    <item
+        android:id="@+id/action_markspecial"
+        android:orderInCategory="100"
+        android:title="MARCA" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:title="CANCELLA" />
+
+</menu>
