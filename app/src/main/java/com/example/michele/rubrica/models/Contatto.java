@@ -26,16 +26,8 @@ public class Contatto {
         return speciale;
     }
 
-    public void setSpecialeTrue() {
-        speciale = 1;
-    }
-
     public void setSpeciale(int speciale) {
         this.speciale = speciale;
-    }
-
-    public void setSpecialeFalse() {
-        speciale = 0;
     }
 
     public int getId() {

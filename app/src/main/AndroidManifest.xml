@@ -21,11 +21,9 @@
                 <data android:mimeType="text/plain"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.ContattoDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".activities.MainActivity"/>
-
     </application>
 
 </manifest>

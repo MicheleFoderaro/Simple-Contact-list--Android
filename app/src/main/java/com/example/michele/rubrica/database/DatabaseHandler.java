@@ -73,7 +73,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Contatto> getAllContatti() {
         ArrayList<Contatto> contattiList = new ArrayList<>();
-        String SELECT_QUERY = "SELECT * FROM " + TABLE_CONTATTI;
+        String SELECT_QUERY = "SELECT * FROM " + TABLE_CONTATTI + " ORDER BY " + COLUMN_ID + " DESC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
         if (cursor.moveToFirst()) {

@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.michele.rubrica.R;
 import com.example.michele.rubrica.adapters.ContattoAdapter;
@@ -46,7 +42,6 @@ public class MainActivity extends AppCompatActivity  {
 
     public static final String NOME_CONTATTO = "nome";
     public static final String CELLULARE_CONTATTO = "cellulare";
-    public static final String SPECIALE_CONTATTO = "speciale";
 
     public static final String ACTION_MODE = "ACTION_MODE";
     public static final int REQUEST_EDIT = 1002;
@@ -94,10 +89,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode!= Activity.RESULT_CANCELED) {
 
-            String nome, cellulare, speciale;
+            String nome, cellulare;
             nome = data.getStringExtra(NOME_CONTATTO);
             cellulare = data.getStringExtra(CELLULARE_CONTATTO);
-            speciale = data.getStringExtra(SPECIALE_CONTATTO); //integer
             //Controllo chi ha avviato l'intent
             if (requestCode == NEW_CONTATTO_REQUEST && resultCode == Activity.RESULT_OK) {
                 //Controllo l'integrita' dei dati
@@ -106,6 +100,7 @@ public class MainActivity extends AppCompatActivity  {
                     adapter.addDataSet(contatto);
                     contattoRV.scrollToPosition(0);
             } else if (requestCode == REQUEST_EDIT && resultCode == Activity.RESULT_OK) {
+                    contattoEditing = adapter.getDataSet(adapter.getPosition());
                     contattoEditing.setNome(nome);
                     contattoEditing.setNumero(cellulare);
                     dbHandler.updateNote(contattoEditing);
@@ -198,6 +193,5 @@ public class MainActivity extends AppCompatActivity  {
     public void onDestroy() {
         super.onDestroy();
     }
-
 
 }

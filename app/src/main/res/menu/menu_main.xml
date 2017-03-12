@@ -6,7 +6,7 @@
     <item
         android:id="@+id/action_switch"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_bookmark_white_24dp"
+        android:icon="@drawable/ic_view_grid_white_24dp"
         android:title="switch"
         app:showAsAction="always"
         />

@@ -1,5 +1,6 @@
 package com.example.michele.rubrica.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -99,6 +100,7 @@ public class ContattoAdapter extends RecyclerView.Adapter<ContattoAdapter.Contat
         ImageView imageView;
         Button messaggia, call;
 
+
         public ContattoVH(View itemView) {
             super(itemView);
             nomeTv = (TextView) itemView.findViewById(R.id.contatto_nome);
@@ -116,6 +118,17 @@ public class ContattoAdapter extends RecyclerView.Adapter<ContattoAdapter.Contat
                     return false;
                 }
             });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setPosition(getAdapterPosition());
+                    Intent i = new Intent(view.getContext(), ContattoDetailsActivity.class);
+                    i.putExtra(MainActivity.ACTION_MODE,  MainActivity.EDIT_MODE);
+                    i.putExtra(MainActivity.NOME_CONTATTO, dataSet.get(getAdapterPosition()).getNome());
+                    i.putExtra(MainActivity.CELLULARE_CONTATTO, dataSet.get(getAdapterPosition()).getNumero());
+                    ((MainActivity)context).startActivityForResult(i, MainActivity.REQUEST_EDIT);
+                }
+            });
         }
 
         @Override
@@ -129,7 +142,7 @@ public class ContattoAdapter extends RecyclerView.Adapter<ContattoAdapter.Contat
             switch (view.getId()) {
                 case R.id.contaggo_call_btn:
                     Intent intent = new Intent();
-                    intent.setAction(intent.ACTION_VIEW);
+                    intent.setAction(Intent.ACTION_VIEW);
                     Uri uri = Uri.parse("tel:" + numeroTv.getText().toString());
                     intent.setData(uri);
                     view.getContext().startActivity(intent);
